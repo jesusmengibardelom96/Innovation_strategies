@@ -1,0 +1,7 @@
+{
+  "name": "technical-interview",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
