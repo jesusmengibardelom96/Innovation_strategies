@@ -2,27 +2,54 @@
   <ion-page>
     <ion-header :translucent="true">
       <ion-toolbar>
-        <ion-title>Blank</ion-title>
+        <ion-title>Swapi</ion-title>
       </ion-toolbar>
     </ion-header>
     
     <ion-content :fullscreen="true">
       <ion-header collapse="condense">
         <ion-toolbar>
-          <ion-title size="large">Blank</ion-title>
+          <ion-title size="large">Swapi</ion-title>
         </ion-toolbar>
       </ion-header>
     
       <div id="container">
-        <strong>Ready to create an app?</strong>
-        <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+        <ion-slides pager="true" :options="setUpSlideOpts()">
+          <ion-slide router-link="/people">
+            <ion-card>
+              <ion-card-header>
+                <img src="../../public/assets/grupo-de-personas.png">
+                <ion-card-subtitle></ion-card-subtitle>
+                <ion-card-title><h1>People</h1></ion-card-title>
+              </ion-card-header>
+            </ion-card>
+          </ion-slide>
+          <ion-slide router-link="/starships">
+            <ion-card>
+              <ion-card-header>
+                <img src="../../public/assets/nave-espacial.png">
+                <ion-card-subtitle></ion-card-subtitle>
+                <ion-card-title><h1>Starships</h1></ion-card-title>
+              </ion-card-header>
+            </ion-card>
+          </ion-slide>
+          <ion-slide router-link="/planets">
+            <ion-card>
+              <ion-card-header>
+                <img src="../../public/assets/jupiter.png">
+                <ion-card-subtitle></ion-card-subtitle>
+                <ion-card-title><h1>Planets</h1></ion-card-title>
+              </ion-card-header>
+            </ion-card>
+          </ion-slide>
+        </ion-slides>
       </div>
     </ion-content>
   </ion-page>
 </template>
 
 <script lang="ts">
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonSlides, IonSlide, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/vue';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
@@ -32,9 +59,27 @@ export default defineComponent({
     IonHeader,
     IonPage,
     IonTitle,
-    IonToolbar
+    IonToolbar,
+    IonSlides,
+    IonSlide,
+    IonCard, 
+    IonCardHeader, 
+    IonCardSubtitle, 
+    IonCardTitle
+  },
+  methods: {
+    //Function for set the slider options
+    async setUpSlideOpts() {
+      const slideOpts = {
+        initialSlide: 1,
+        speed: 400
+      };
+      return { slideOpts }
+    }
   }
 });
+
+
 </script>
 
 <style scoped>
@@ -64,5 +109,17 @@ export default defineComponent({
 
 #container a {
   text-decoration: none;
+}
+
+ion-card {
+  width: 100%;
+  height: 300px!important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.swiper-slide, .swiper-pagination {
+    bottom: 40px!important;
 }
 </style>
